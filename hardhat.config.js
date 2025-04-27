@@ -5,6 +5,7 @@ require("./tasks")
 require("hardhat-deploy")
 require("@nomicfoundation/hardhat-ethers");
 require("hardhat-deploy");
+require("hardhat-deploy-ethers");
 
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL
 const PRIVATE_KEY = process.env.PRIVATE_KEY
@@ -30,19 +31,14 @@ module.exports = {
     }
   },
   namedAccounts: {
-    deployer: { // 标准命名账户
-      default: 0, // 本地和默认网络使用索引0
-      sepolia: 0  // Sepolia 网络也使用索引0
+    firstAccount: {
+      default: 0
     },
-    user1: { // 次要账户标准命名
+    secondAccount: {
       default: 1
-    }
+    },
   },
   gasReporter: {
-    enabled: true,
-    // currency: "USD", // 货币类型
-    // coinmarketcap: COINMARKETCAP_API_KEY,
-    // token: "ETH",    // 计价代币
-    // excludeContracts: ["MockV3Aggregator"] // 排除 mock 合约
+    enabled: true
   }
 };
